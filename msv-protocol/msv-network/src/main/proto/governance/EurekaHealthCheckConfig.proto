@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+//降级具体配置
+message EurekaHealthCheckConfig {
+    //规则id
+    int64 id = 1;
+    //是否启用
+    int32 enabled = 2;
+    //版本号
+    int64 version = 3;
+    //是否删除
+    int32 delFlag = 4;
+    //需要检测的项目列表
+    repeated string items = 5;
+}

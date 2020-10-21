@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hupu.msv</groupId>
+        <artifactId>msv-sdk-plugin</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>msv-httpasyncclient-4.x-plugin</artifactId>
+
+    <name>httpasyncclient-4.x-plugin</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <apache-httpasyncclient.version>4.1.1</apache-httpasyncclient.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
+            <version>${apache-httpasyncclient.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

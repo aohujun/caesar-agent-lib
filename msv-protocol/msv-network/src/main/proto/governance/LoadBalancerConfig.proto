@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+
+//具体的负载均衡配置
+message LoadBalancerConfig {
+    //规则id
+    int64 id = 1;
+    //是否启用
+    int32 enabled = 2;
+    //版本号
+    int64 version = 3;
+    //是否删除
+    int32 delFlag = 4;
+    // 服务名称
+    string serverName = 5;
+    // 负载均衡策略
+    string rule = 6;
+}

@@ -1,0 +1,2 @@
+com.hupu.msv.apm.agent.instrumentation.ContextTrampolineInitializer
+com.hupu.msv.apm.agent.instrumentation.executor.ExecutorInstrumentation

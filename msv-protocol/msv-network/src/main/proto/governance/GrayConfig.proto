@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+
+//灰度具体配置
+message GrayConfig {
+    //规则id
+    int64 id = 1;
+    //是否启用
+    int32 enabled = 2;
+    //版本号
+    int64 version = 3;
+    //是否删除
+    int32 delFlag = 4;
+    // 策略
+    string config = 5;
+}
+
+//灰度具体配置
+message ExclusiveConfig {
+    //规则id
+    int64 id = 1;
+    //是否启用
+    int32 enabled = 2;
+    //版本号
+    int64 version = 3;
+    //是否删除
+    int32 delFlag = 4;
+    //独占式实例列表
+    string instanceIdMap = 5;
+
+}
+
+//透传httpHeader配置
+message ExtensionHttpHeadersConfig {
+    //规则id
+    int64 id = 1;
+    //是否启用
+    int32 enabled = 2;
+    //版本号
+    int64 version = 3;
+    //是否删除
+    int32 delFlag = 4;
+    //header K、V列表
+    string headerList = 5;
+    //颜色
+    string color = 6;
+    //是否覆盖染色规则
+    bool cover = 7;
+
+}
+
+
+

@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+
+// 服务和插件信息上报请求
+message AppPluginInfoReportRequest {
+    string appId = 1;
+    string instanceIp = 2;
+    repeated PluginInfo pluginInfo = 3;
+    //Agent版本
+    string agentVersion = 4;
+    int64 startupTime = 5;
+    string instanceName=6;
+    //java版本
+    string javaVersion=7;
+    //gcType
+    string gcType=8;
+    //启动参数
+    string startupArguments=9;
+
+}
+
+message AppPluginInfoReportResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+//插件信息
+message PluginInfo {
+    //插件名字
+    string pluginName = 1;
+    //插件启用状态
+    bool enabled = 2;
+    //配置版本
+    int64 configVersion = 3;
+    //插件版本
+    string pluginVersion = 4;
+}
+
+service AppPluginInfoService {
+    //上报服务和插件信息
+    rpc ReportAppPluginInfo (AppPluginInfoReportRequest) returns (AppPluginInfoReportResponse);
+}

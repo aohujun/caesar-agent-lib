@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+
+//配置版本上报信息
+message ConfigVersionReportRequest {
+    string appId = 1;
+    string instanceIp = 2;
+    repeated PluginConfigInfo pluginInfo = 3;
+}
+// 插件配置信息
+message PluginConfigInfo {
+    string pluginName = 1;
+    int64 version = 2;
+}
+
+message ConfigVersionReportResponse {
+    int32 code = 1;
+    string msg = 2;
+}

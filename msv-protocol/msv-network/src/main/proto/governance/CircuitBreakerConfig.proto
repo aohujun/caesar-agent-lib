@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+import "governance/FallbackResult.proto";
+
+//熔断具体配置
+message CircuitBreakerConfig {
+    //规则id
+    int64 id = 1;
+
+    //需要熔断的服务名称
+    string serviceName = 2;
+
+    //需要熔断的服务接口path
+    string path = 3;
+
+    //熔断方式  1代表强制开启（手动）熔断，2代表自动熔断
+    int32 forceOpen = 4;
+
+    //熔断类型 1代表非熔断器主动断开（业务异常） 2代表超时断开 3代表线程次拒绝断开 4代表信号量拒绝断开 5代表所有类型汇总
+    int32 type = 5;
+
+    //统计条件 时间窗口(ms)
+    int32 timeWindow = 6;
+
+    //统计条件 时间窗口内最小调用请求数
+    int32 minRequestNumber = 7;
+
+    //阀值 如果熔断类型为超时，这里为超时时间，如果为线程池 此值为空
+    int32 threshold = 8;
+
+    //统计方式  1代表时间窗口内错误率  2代表时间窗口内统计请求数
+    int32 statisticalType = 9;
+
+    //如果 统计方式为错误率，这里的值代表错误率（百分比）   如果为请求数  这里为请求个数
+    int32 condition = 10;
+
+    //恢复窗口
+    int32 sleepWindow = 11;
+
+    //是否启用
+    int32 enabled = 12;
+
+    //版本号
+    int64 version = 13;
+    //是否删除
+    int32 delFlag = 14;
+
+    //熔断降级之后返回的结果
+    Result result = 15;
+
+    //result启用状态
+    string resultEnabled = 16;
+}

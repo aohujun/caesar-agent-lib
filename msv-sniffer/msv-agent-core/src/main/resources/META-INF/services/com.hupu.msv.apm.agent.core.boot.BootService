@@ -1,0 +1,10 @@
+com.hupu.msv.apm.agent.core.remote.TraceSegmentServiceClient
+com.hupu.msv.apm.agent.core.context.ContextManager
+com.hupu.msv.apm.agent.core.sampling.SamplingService
+com.hupu.msv.apm.agent.core.remote.GRPCChannelManager
+com.hupu.msv.apm.agent.core.remote.ServiceAndEndpointRegisterClient
+com.hupu.msv.apm.agent.core.context.ContextManagerExtendService
+com.hupu.msv.apm.agent.core.commands.CommandService
+com.hupu.msv.apm.agent.core.commands.CommandExecutorService
+com.hupu.msv.apm.agent.core.context.OperationNameFormatService
+com.hupu.msv.apm.agent.core.governance.GovernanceService

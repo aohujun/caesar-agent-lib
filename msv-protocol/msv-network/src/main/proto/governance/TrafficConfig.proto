@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+import "governance/FallbackResult.proto";
+
+
+//具体的限流配置
+message TrafficConfig {
+    //流控规则id
+    int64 id = 1;
+    /**
+     * 流控类型。0：普通流控 1：白名单 2：黑名单
+     */
+    int32 trafficType = 2;
+
+    /**
+     * 流量来源类型 0：所有类型 1：instanceID 2：ip 3：app
+     */
+    int32 srcType = 3;
+    /**
+     * 流量来源。当srcType不等于0时，此值必填
+     */
+    string src = 4;
+
+    /**
+     * 流量目标类型。0：app 1：instanceID
+     */
+    int32 dstType = 5;
+
+    /**
+     * 流量目标
+     */
+    string dst = 6;
+
+    /**
+     * 需要限制的地址
+     */
+
+    string path = 7;
+
+    /**
+     * 限流阈值
+     */
+    int32 amount = 8;
+
+    /**
+     * 是否开启流控
+     */
+    int32 enabled = 9;
+    /**
+     * 流控规则版本号
+     */
+    int64 version = 10;
+    /**
+    * 删除状态
+    */
+    int32 delFlag = 11;
+    //限流之后返回的结果
+    Result result = 12;
+}

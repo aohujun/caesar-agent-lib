@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.hupu.msv</groupId>
+        <artifactId>spring-cloud</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>netflix-plugins</artifactId>
+    <modules>
+        <module>spring-cloud-feign-1.x-plugin</module>
+        <module>spring-cloud-netflix-core-1.4.x-plugin</module>
+        <module>spring-cloud-netflix-eureka-client-1.4.x-plugin</module>
+        <module>spring-cloud-eureka-client-1.7.2-plugin</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>netflix-plugins</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sdk.plugin.related.dir>/../../..</sdk.plugin.related.dir>
+    </properties>
+
+</project>

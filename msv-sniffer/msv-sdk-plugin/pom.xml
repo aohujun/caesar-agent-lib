@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.hupu.msv</groupId>
+        <artifactId>msv-sniffer</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>msv-sdk-plugin</artifactId>
+    <modules>
+        <module>jdbc-commons</module>
+<!--        <module>httpClient-4.x-plugin</module>-->
+        <module>jedis-2.x-plugin</module>
+        <module>redisson-3.x-plugin</module>
+        <module>tomcat-7.x-8.x-plugin</module>
+<!--        <module>mongodb-3.x-plugin</module>-->
+        <module>feign-default-http-9.x-plugin</module>
+<!--        <module>okhttp-3.x-plugin</module>-->
+        <module>spring-plugins</module>
+<!--        <module>sharding-jdbc-1.5.x-plugin</module>-->
+<!--        <module>sharding-sphere-3.x-plugin</module>-->
+<!--        <module>sharding-sphere-4.x-plugin</module>-->
+<!--        <module>grpc-1.x-plugin</module>-->
+        <module>mysql-5.x-plugin</module>
+        <module>mysql-6.x-plugin</module>
+        <module>mysql-8.x-plugin</module>
+        <module>mysql-common</module>
+        <module>rocketMQ-3.x-plugin</module>
+        <module>rocketMQ-4.x-plugin</module>
+        <module>ons-1.8.x-plugin</module>
+<!--        <module>mongodb-2.x-plugin</module>-->
+<!--        <module>httpasyncclient-4.x-plugin</module>-->
+        <module>kafka-plugin</module>
+        <module>hystrix-1.x-plugin</module>
+<!--        <module>activemq-5.x-plugin</module>-->
+<!--        <module>elasticsearch-5.x-plugin</module>-->
+<!--        <module>rabbitmq-5.x-plugin</module>-->
+        <module>lettuce-4.x-plugin</module>
+        <module>lettuce-5.x-plugin</module>
+        <module>logback-plugin</module>
+        <module>log4j-1.x-plugin</module>
+        <module>log4j-2.x-plugin</module>
+        <module>ribbon-2.2.x-plugin</module>
+        <module>msv-foundation-1.7.x-plugin</module>
+        <module>msv-gray-commons</module>
+        <module>msv-governance-commons</module>
+        <module>msv-log-commons</module>
+
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>msv-sdk-plugin</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sdk.plugin.related.dir />
+        <shade.net.bytebuddy.source>net.bytebuddy</shade.net.bytebuddy.source>
+        <shade.net.bytebuddy.target>${shade.package}.${shade.net.bytebuddy.source}</shade.net.bytebuddy.target>
+
+        <agent.package.dest.dir>${project.build.directory}${sdk.plugin.related.dir}/../../../../msv-agent
+        </agent.package.dest.dir>
+        <plugin.dest.dir>${agent.package.dest.dir}/plugins</plugin.dest.dir>
+
+        <ant-contrib.version>1.0b3</ant-contrib.version>
+        <ant-nodeps.version>1.8.1</ant-nodeps.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hupu.msv</groupId>
+            <artifactId>msv-agent-core</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hupu.msv</groupId>
+            <artifactId>msv-util</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hupu.msv</groupId>
+            <artifactId>msv-test-tools</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+                            <createDependencyReducedPom>true</createDependencyReducedPom>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <relocations>
+                                <relocation>
+                                    <pattern>${shade.net.bytebuddy.source}</pattern>
+                                    <shadedPattern>${shade.net.bytebuddy.target}</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.runtime.classpath" />
+                                <if>
+                                    <equals arg1="${project.packaging}" arg2="jar" />
+                                    <then>
+                                        <mkdir dir="${plugin.dest.dir}" />
+                                        <copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar" tofile="${plugin.dest.dir}/${project.artifactId}-${project.version}.jar" overwrite="true" />
+                                    </then>
+                                </if>
+
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>ant-contrib</groupId>
+                        <artifactId>ant-contrib</artifactId>
+                        <version>${ant-contrib.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>ant</groupId>
+                                <artifactId>ant</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant-nodeps</artifactId>
+                        <version>${ant-nodeps.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>

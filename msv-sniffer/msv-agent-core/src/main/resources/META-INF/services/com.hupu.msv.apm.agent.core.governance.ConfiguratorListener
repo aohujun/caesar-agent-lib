@@ -1,0 +1,6 @@
+com.hupu.msv.apm.agent.core.governance.traffic.TrafficConfigurator
+com.hupu.msv.apm.agent.core.governance.gray.GrayConfigurator
+com.hupu.msv.apm.agent.core.governance.degrade.DegradeConfigurator
+com.hupu.msv.apm.agent.core.governance.circuitbreaker.CircuitBreakerConfigurator
+com.hupu.msv.apm.agent.core.governance.loadbalancer.LoadBalancerConfigurator
+com.hupu.msv.apm.agent.core.governance.eurekahealthcheck.EurekaHealthCheckConfigurator

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>netflix-plugins</artifactId>
+        <groupId>com.hupu.msv</groupId>
+        <version>0.1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+
+    <artifactId>spring-cloud-netflix-eureka-client-1.4.x-plugin</artifactId>
+
+    <properties>
+        <zuul-core.version>1.3.0</zuul-core.version>
+        <gson.version>2.8.6</gson.version>
+        <spring-boot.version>1.5.14.RELEASE</spring-boot.version>
+        <spring.version>4.3.18.RELEASE</spring.version>
+        <neflix.version>1.7.2</neflix.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.netflix.eureka</groupId>
+            <artifactId>eureka-client</artifactId>
+            <version>${neflix.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+
+
+</project>

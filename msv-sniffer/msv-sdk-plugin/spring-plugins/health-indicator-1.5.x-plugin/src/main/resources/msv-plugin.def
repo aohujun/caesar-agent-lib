@@ -1,0 +1,2 @@
+health-indicator-1.5.x=com.hupu.msv.apm.plugin.health.indicator.v1.define.EurekaHealthCheckHandlerInstrumentation
+health-indicator-1.5.x=com.hupu.msv.apm.plugin.health.indicator.v1.define.HealthEndpointInstrumentation

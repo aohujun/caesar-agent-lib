@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hupu.msv</groupId>
+        <artifactId>msv-sdk-plugin</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>msv-redisson-3.x-plugin</artifactId>
+    <packaging>jar</packaging>
+
+    <name>redisson-3.x-plugin</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <redisson.version>3.6.0</redisson.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>${redisson.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+</project>

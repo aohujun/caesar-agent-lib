@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hupu.msv.apm.network.governance";
+import "governance/ConfigVersionReport.proto";
+import "governance/TrafficConfig.proto";
+import "governance/DegradeConfig.proto";
+import "governance/CircuitBreakerConfig.proto";
+import "governance/GrayConfig.proto";
+import "governance/LoadBalancerConfig.proto";
+import "governance/EurekaHealthCheckConfig.proto";
+
+//拉取微服务治理配置请求信息
+message GovernanceConfigRequest {
+    string appId = 1;
+    string instanceIp = 2;
+    int64 version = 3;
+}
+//拉取微服务治理配置返回信息
+message GovernanceConfigResponse {
+    Global global = 1;
+    Gray gray = 2;
+    CircuitBreaker circuitBreaker = 3;
+    Degrade degrade = 4;
+    Traffic traffic = 5;
+    LoadBalancer loadBalancer = 6;
+    EurekaHealthCheck eurekaHealthCheck = 7;
+}
+//全局配置
+message Global {
+    int64 version = 1;
+}
+//eureka client health check
+message EurekaHealthCheck {
+    string enabled = 1;
+    //具体的配置项
+    repeated EurekaHealthCheckConfig config = 2;
+
+}
+
+//负载均衡
+message LoadBalancer {
+    string enabled = 1;
+    repeated LoadBalancerConfig config = 2;
+}
+
+//灰度配置
+message Gray {
+    string enabled = 1;
+    repeated GrayConfig config = 2; //配置列表
+    repeated ExclusiveConfig exclusiveConfig = 3; //独占式实例配置
+    repeated ExtensionHttpHeadersConfig extensionHttpHeadersConfig = 4; //透传httpHeader配置
+}
+
+//熔断
+message CircuitBreaker {
+    string enabled = 1;
+    repeated CircuitBreakerConfig config = 2; //配置列表
+}
+
+//降级
+message Degrade {
+    string enabled = 1;
+    repeated DegradeConfig config = 2; //配置列表
+
+}
+
+//限流
+message Traffic {
+    string enabled = 1;
+    repeated TrafficConfig config = 2; //配置列表
+}
+
+//服务治理配置service
+service GovernanceConfigService {
+    // 拉取配置信息
+    rpc PullConfig (GovernanceConfigRequest) returns (GovernanceConfigResponse);
+    // 上报配置版本
+    rpc ReportVersion (ConfigVersionReportRequest) returns (ConfigVersionReportResponse);
+}
+
+

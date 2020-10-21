@@ -1,0 +1,23 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>agent</artifactId>
+        <groupId>com.hupu.msv</groupId>
+        <version>0.1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>msv-commons</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>msv-util</module>
+        <module>msv-datacarrier</module>
+    </modules>
+
+    <name>msv-commons</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <compiler.version>1.6</compiler.version>
+    </properties>
+</project>
